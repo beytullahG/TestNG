@@ -1,23 +1,22 @@
-package P14_TestNG;
+package tests.P14_TestNG;
 
 import org.testng.annotations.Test;
 
-public class C01_Priority {
+public class C02_DependsOnMethods {
 
-    @Test
+    @Test(dependsOnMethods = "testAutomationTest")
     public void amazonTest(){
         System.out.println("Amazon test PASSED");
     }
 
-    @Test(priority = 5)
+    @Test
     public void testAutomationTest(){
+        //Assert.assertTrue(false);
         System.out.println("Test Automation test PASSED");
     }
 
-    @Test(priority = -5)
+    @Test(dependsOnMethods = "amazonTest")
     public void wiseQuarterTest(){
         System.out.println("Wise Quarter test PASSED");
     }
-
-
 }
