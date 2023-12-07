@@ -13,26 +13,26 @@ import java.time.Duration;
 
 public class C03_SearchTest {
 
-    // Make the necessary configurations
-    // Create 3 test methods
-    // 1- Go to the test automation homepage
-    //    and test that we have reached the correct address
-    // 2- Perform a search for "phone"
-    //    and test that products are found in the search results
-    // 3- Click on the first product and verify that the product page
-    //    contains the word "phone" in a case-insensitive manner
+
+    // gerekli ayarlari yapip
+    // 3 test method'u olusturun
+    // 1- testotomasyonu anasayfaya gidip
+    //    dogru adrese gittigimizi test edin
+    // 2- phone icin arama yapip
+    //    arama sonucunda urun bulunabildigini test edin
+    // 3- ilk urune tiklayip
+    //    acilan urun sayfasinda, urun isminin case sensitive olmadan phone icerdigini test edin
     WebDriver driver;
 
     @Test
-    public void testAutomationHomepage(){
+    public void testOtomasyonuTesti(){
 
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver= new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        // 1- Go to the test automation homepage
-        //    and test that we have reached the correct address
+        // 1- testotomasyonu anasayfaya gidip
+        //    dogru adrese gittigimizi test edin
         driver.get("https://www.testotomasyonu.com");
 
         String expectedUrl ="https://www.testotomasyonu.com/";
@@ -40,33 +40,35 @@ public class C03_SearchTest {
         Assert.assertEquals(actualUrl,expectedUrl);
     }
 
-    @Test(dependsOnMethods = "testAutomationHomepage")
-    public void searchTest(){
-        // 2- Perform a search for "phone"
-        //    and test that products are found in the search results
-        WebElement searchBox = driver.findElement(By.id("global-search"));
-        searchBox.sendKeys("phone" + Keys.ENTER);
+    @Test(dependsOnMethods = "testOtomasyonuTesti")
+    public void aramaTesti(){
+        // 2- phone icin arama yapip
+        //    arama sonucunda urun bulunabildigini test edin
+        WebElement aramaKutusu = driver.findElement(By.id("global-search"));
+        aramaKutusu.sendKeys("phone" + Keys.ENTER);
 
-        WebElement searchResultElement = driver.findElement(By.className("product-count-text"));
+        WebElement aramaSonucElementi = driver.findElement(By.className("product-count-text"));
 
-        String unexpectedResultText = "0 Products Found";
-        String actualResultText = searchResultElement.getText();
+        String unexpectedSonucYazisi = "0 Products Found";
+        String actualSonucyazisi = aramaSonucElementi.getText();
 
-        Assert.assertNotEquals(unexpectedResultText, actualResultText);
+        Assert.assertNotEquals(unexpectedSonucYazisi,actualSonucyazisi);
     }
 
-    @Test(dependsOnMethods = "searchTest")
-    public void productNameTest(){
-        // 3- Click on the first product and verify that the product page
-        //    contains the word "phone" in a case-insensitive manner
-        driver.findElement(By.xpath("(//*[@class='product-box my-2  py-1'])[1]")).click();
+    @Test(dependsOnMethods = "aramaTesti")
+    public void urunIsimTesti(){
+        // 3- ilk urune tiklayip
+        //    acilan urun sayfasinda, urun isminin case sensitive olmadan phone icerdigini test edin
 
-        WebElement productNameElement = driver.findElement(By.xpath(" //div[@class=' heading-sm mb-4']"));
+        driver.findElement(By.xpath("(//*[@class='product-box my-2  py-1'])[1]"))
+                .click();
 
-        String expectedProductNameContent = "phone";
-        String actualProductNameLowercase = productNameElement.getText().toLowerCase();
+        WebElement urunIsimElementi = driver.findElement(By.xpath(" //div[@class=' heading-sm mb-4']"));
 
-        Assert.assertTrue(actualProductNameLowercase.contains(expectedProductNameContent));
+        String expectedIsimIcerik = "phone";
+        String actualIsimKucukHarf = urunIsimElementi.getText().toLowerCase();
+
+        Assert.assertTrue(actualIsimKucukHarf.contains(expectedIsimIcerik));
 
         driver.close();
     }
