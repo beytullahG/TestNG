@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import utilities.Driver;
 
-public class C04_UsingDriverClass {
+public class C04_DriverClassUsage {
 
     @Test
     public void test01() throws InterruptedException {

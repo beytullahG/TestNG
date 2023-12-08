@@ -12,7 +12,9 @@ public class TestAutomationPage {
 public TestAutomationPage(){
     PageFactory.initElements(Driver.getDriver(),this);
 }
+
     @FindBy(id ="global-search")
+   // @FindBy(xpath = "//form[@class='expanding-search-form ']")
     public WebElement searchBox;
 
     @FindBy(className = "product-count-text")

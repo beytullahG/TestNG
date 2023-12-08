@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import pages.TestAutomationPage;
 import utilities.Driver;
 
-public class C05_UsingPageClass {
+public class C05_PageClassUsage {
 
     @Test
     public void searchTest(){
