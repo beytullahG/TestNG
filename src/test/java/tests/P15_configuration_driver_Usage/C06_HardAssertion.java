@@ -1,21 +1,52 @@
 package tests.P15_configuration_driver_Usage;
 
+import org.openqa.selenium.Keys;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import pages.TestAutomationPage;
+import utilities.ConfigReader;
+import utilities.Driver;
+import utilities.ReusableMethods;
+
+import java.lang.module.Configuration;
+
 public class C06_HardAssertion {
 
+    @Test
     public void hardAssertionTest(){
 
-        // Go to the testautomationu homepage
+        // Go to the Test Automation homepage
+        Driver.getDriver().get(ConfigReader.getProperty("toUrl"));
 
-        // Test if the Title contains Test
+        // Test that the title contains "Test"
+        String expectedTitleContent = "Test";
+        String actualTitle = Driver.getDriver().getTitle();
+        Assert.assertTrue(actualTitle.contains(expectedTitleContent));
 
-        // Test if the URL is https://www.testautomationu.com
+        // Test that the URL is https://www.testotomasyonu.com/
+        String expectedUrl = "https://www.testotomasyonu.com/";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(actualUrl, expectedUrl);
 
-        // Test if the search box is in a usable state
+        // Test that the search box is in a usable state
+        TestAutomationPage testAutomationPage = new TestAutomationPage();
+        Assert.assertTrue(testAutomationPage.searchBox.isEnabled());
 
-        // Search for a specified keyword and test if a product is found
+        // Test that a specified search term finds a product
+        testAutomationPage
+                .searchBox
+                .sendKeys(ConfigReader.getProperty("toSearchKeyword") + Keys.ENTER);
 
-        // Search for "Nutella" and test if a product is found
+        int foundResultCount = testAutomationPage.foundProductElementsList.size();
+        Assert.assertTrue(foundResultCount > 1);
+
+        // Test that searching for "Nutella" finds a product
+        testAutomationPage.searchBox.clear();
+        testAutomationPage.searchBox.sendKeys("Nutella" + Keys.ENTER);
+        foundResultCount = testAutomationPage.foundProductElementsList.size();
+        Assert.assertTrue(foundResultCount == 0);
 
         // Close the page
+        Driver.closeDriver();
     }
 }
