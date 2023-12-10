@@ -8,8 +8,8 @@ import utilities.Driver;
 import java.util.List;
 
 public class TestAutomationFormPage {
-    public TestAutomationFormPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public TestAutomationFormPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(xpath = "//select[@class='form-control']")

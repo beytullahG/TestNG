@@ -40,7 +40,7 @@ public class C06_HardAssertion {
         int foundResultCount = testAutomationPage.foundProductElementsList.size();
         Assert.assertTrue(foundResultCount > 1);
 
-        // Test that searching for "Nutella" finds a product
+        // Test that searching for 'Nutella' does not find any products
         testAutomationPage.searchBox.clear();
         testAutomationPage.searchBox.sendKeys("Nutella" + Keys.ENTER);
         foundResultCount = testAutomationPage.foundProductElementsList.size();

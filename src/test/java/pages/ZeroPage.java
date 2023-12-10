@@ -8,9 +8,10 @@ import utilities.Driver;
 import java.util.List;
 
 public class ZeroPage {
-    public ZeroPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public ZeroPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
+
     @FindBy(xpath = "//i[@class='icon-signin']")
     public WebElement signInButtonMainPage;
     @FindBy(id = "user_login")
@@ -27,7 +28,6 @@ public class ZeroPage {
     public WebElement purchaseForeignCurrencyLink;
     @FindBy(id = "pc_currency")
     public WebElement pcCurrencyDropdownElement;
-
 
 
 }

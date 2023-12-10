@@ -51,6 +51,7 @@ public class C01_WebuniversityTest {
         //10. Test that you have returned to the first page
         Assert.assertTrue(Driver.getDriver().getTitle().contains("WebDriverUniversity.com"));
 
+        //11. Close the page
         Driver.quitDriver();
 
     }

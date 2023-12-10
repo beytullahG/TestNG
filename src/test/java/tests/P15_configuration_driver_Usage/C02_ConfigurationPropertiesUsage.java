@@ -12,14 +12,14 @@ import utilities.ReusableMethods;
 public class C02_ConfigurationPropertiesUsage {
 
     @Test
-    public void searchTest(){
+    public void searchTest() {
 
         // Go to the testautomationu homepage
         Driver.getDriver().get(ConfigReader.getProperty("toUrl"));
 
         // Search for the product specified in configuration.properties
-        TestAutomationPage testAutomationPage=new TestAutomationPage();
-        testAutomationPage.searchBox.sendKeys(ConfigReader.getProperty("toSearchKeyword")+ Keys.ENTER);
+        TestAutomationPage testAutomationPage = new TestAutomationPage();
+        testAutomationPage.searchBox.sendKeys(ConfigReader.getProperty("toSearchKeyword") + Keys.ENTER);
 
         // Test whether the product is found in the search results
         int numberOfFoundProducts = testAutomationPage.foundProductElementsList.size();

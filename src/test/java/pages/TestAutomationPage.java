@@ -9,12 +9,12 @@ import java.util.List;
 
 public class TestAutomationPage {
 
-public TestAutomationPage(){
-    PageFactory.initElements(Driver.getDriver(),this);
-}
+    public TestAutomationPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
 
-    @FindBy(id ="global-search")
-   // @FindBy(xpath = "//form[@class='expanding-search-form ']")
+    @FindBy(id = "global-search")
+    // @FindBy(xpath = "//form[@class='expanding-search-form ']")
     public WebElement searchBox;
 
     @FindBy(className = "product-count-text")

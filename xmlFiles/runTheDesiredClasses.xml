@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="running specified classes">
+
+    <test name="Login Test">
+        <classes>
+            <class name="tests.P15_configuration_driver_Usage.C03_PositiveLoginTest"></class>
+            <class name="tests.P15_configuration_driver_Usage.C04_NegativeLoginTest"></class>
+            <class name="tests.P16_softAssertion_xmlFiles.C02_SoftAssertion"></class>
+        </classes>
+    </test>
+
+</suite>

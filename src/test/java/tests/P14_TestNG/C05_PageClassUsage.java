@@ -9,7 +9,7 @@ import utilities.Driver;
 public class C05_PageClassUsage {
 
     @Test
-    public void searchTest(){
+    public void searchTest() {
         // Navigate to the Test Automation homepage
         Driver.getDriver().get("https://www.testotomasyonu.com");
 

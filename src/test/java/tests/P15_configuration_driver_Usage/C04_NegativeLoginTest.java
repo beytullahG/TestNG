@@ -51,6 +51,7 @@ public class C04_NegativeLoginTest {
         //4- Login by clicking the Login button
         testAutomationPage.loginButton.click();
     }
+
     @Test(priority = 5)
     public void invalidEmailInvalidPasswordTest() {
         // 1- Go to the homepage https://www.testotomasyonu.com/
@@ -66,5 +67,8 @@ public class C04_NegativeLoginTest {
         testAutomationPage.loginButton.click();
         //5- Test that login cannot be made succesfully
         Assert.assertTrue(testAutomationPage.emailBox.isDisplayed());
+
+        //6- Close the page
+        Driver.closeDriver();
     }
 }

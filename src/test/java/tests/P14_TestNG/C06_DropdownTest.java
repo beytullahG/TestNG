@@ -12,8 +12,8 @@ import java.util.List;
 public class C06_DropdownTest {
 
     @Test
-    public void dropdownTest(){
-        //● Go to the https://testotomasyonu.com/form address.
+    public void dropdownTest() {
+        //  Go to the https://testotomasyonu.com/form address.
         Driver.getDriver().get("https://testotomasyonu.com/form");
 
         //	1. Select 5 using index from the Birth Date day options
@@ -43,5 +43,8 @@ public class C06_DropdownTest {
 
         //	6. Test that the size of the Month Dropdown menu is 13
         Assert.assertEquals(selectMonth.getOptions().size(), 13);
+
+        //  7. Close the page
+        Driver.closeDriver();
     }
 }
