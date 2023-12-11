@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Run the desired methods">
+    <test name="Mixed methods">
+        <classes>
+            <class name="tests.P14_TestNG.C03_SearchTest">
+                <methods>
+                    <exclude name="productNameTest"></exclude>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>

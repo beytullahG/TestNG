@@ -8,7 +8,7 @@ import utilities.Driver;
 
 public class C03_PositiveLoginTest {
 
-    @Test
+    @Test(groups = {"smoke" , "regression"})
     public void positiveLoginTest() {
 
         // 1- Go to the homepage https://www.testotomasyonu.com/

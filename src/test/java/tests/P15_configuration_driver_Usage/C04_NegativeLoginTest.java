@@ -19,7 +19,7 @@ public class C04_NegativeLoginTest {
     4- Login by clicking the Login button
     5- Test that login cannot be made succesfully
     */
-    @Test
+    @Test(groups = "smoke")
     public void invalidPasswordTest() {
         // 1- Go to the homepage https://www.testotomasyonu.com/
         Driver.getDriver().get(ConfigReader.getProperty("toUrl"));
@@ -37,7 +37,7 @@ public class C04_NegativeLoginTest {
     }
 
 
-    @Test
+    @Test(groups = "regression")
     public void invalidEmailTest() {
         // 1- Go to the homepage https://www.testotomasyonu.com/
         Driver.getDriver().get(ConfigReader.getProperty("toUrl"));

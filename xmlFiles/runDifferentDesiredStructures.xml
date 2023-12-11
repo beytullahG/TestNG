@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<!--
+    for smoke testing
+    C02 and C05 from P14 package
+    Except for the invalidPasswordTest method under C04 from the P15 package, other methods
+    Whole P16 package
+-->
+<suite name="Smoke test">
+    <test name="Smoke test">
+        <packages>
+            <package name="tests.P16_softAssertion_xmlFiles"></package>
+        </packages>
+        <classes>
+            <class name="tests.P15_configuration_driver_Usage.C04_NegativeLoginTest">
+                <methods>
+                    <exclude name="invalidPasswordTest"></exclude>
+                </methods>
+            </class>
+            <class name="tests.P14_TestNG.C02_DependsOnMethods"></class>
+            <class name="tests.P14_TestNG.C05_PageClassUsage"></class>
+        </classes>
+
+    </test>
+</suite>

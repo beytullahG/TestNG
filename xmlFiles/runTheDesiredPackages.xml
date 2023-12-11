@@ -1,1 +1,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Run desired packages">
+    <test name="14th day pakage">
+        <packages>
+            <package name="tests.P14_TestNG"></package>
+        </packages>
+    </test>
+</suite>

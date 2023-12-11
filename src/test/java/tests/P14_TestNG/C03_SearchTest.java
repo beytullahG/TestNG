@@ -25,7 +25,7 @@ public class C03_SearchTest {
     WebDriver driver;
 
     @Test
-    public void testOtomasyonuTesti() {
+    public void testAutomationTest() {
 
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -40,8 +40,8 @@ public class C03_SearchTest {
         Assert.assertEquals(actualUrl, expectedUrl);
     }
 
-    @Test(dependsOnMethods = "testOtomasyonuTesti")
-    public void aramaTesti() {
+    @Test(dependsOnMethods = "testAutomationTest")
+    public void searcTest() {
         // 2- Search for phone and
         //    test that the product can be found in the search result
         WebElement aramaKutusu = driver.findElement(By.id("global-search"));
@@ -55,8 +55,8 @@ public class C03_SearchTest {
         Assert.assertNotEquals(unexpectedSonucYazisi, actualSonucyazisi);
     }
 
-    @Test(dependsOnMethods = "aramaTesti")
-    public void urunIsimTesti() {
+    @Test(dependsOnMethods = "searcTest")
+    public void productNameTest() {
         // 3- Click on the first product and
         //    On the opened product page, test whether the product name contains phone without being case sensitive
 
