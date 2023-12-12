@@ -9,13 +9,23 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
 
-public class Driver {
-    static WebDriver driver;
+public class DriverCross {
 
-    public static WebDriver getDriver() {
-        String browser = ConfigReader.getProperty("browser");
+    private static WebDriver driver;
 
+    private DriverCross() {
+        // Private constructor to prevent instantiation
+    }
+
+    public static WebDriver getDriver(String browser) {
+
+        // If browser is null, use the value from configuration.properties
+        browser = browser == null ? ConfigReader.getProperty("browser") : browser;
+
+        // This line is our safety net
+        // If null is sent as a parameter, it will take the value of the 'browser' property from configuration.properties
         if (driver == null) {
+
             switch (browser) {
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
@@ -33,20 +43,25 @@ public class Driver {
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
             }
+
             driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         }
+
         return driver;
     }
 
     public static void closeDriver() {
-        if (driver != null){
+        if (driver != null) {
             driver.close();
             driver = null;
         }
     }
 
     public static void quitDriver() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 }
